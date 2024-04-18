@@ -1,44 +1,51 @@
-import React,{useState} from 'react'
+import React , {useState} from 'react'
+import {v4 as uuidv4} from 'uuid';
+import Todo from './Todo';
+uuidv4();
 
 function UI() {
-        let day=1;
-        const [toDos,setToDos]=useState([]);
-        const [toDo,setToDo]=useState('');
+   const [value,setValue]=useState("")
+   const handleSubmit = e => {
+     e.preventDefault();
+     addTodo(value);
+     setValue("")
+   }
+
+   const [todos,setTodos]=useState([])
+   const addTodo = todo=>{
+    setTodos([...todos,{id: uuidv4(), task: todo, complete: false, isEditing: false}])
+    console.log(todos)
+   }
+   const toggleComplete = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  }
+
+  
+
+
+
   return (
-    <div className="app">
-      <div className="mainHeading">
-        <h1>ToDo List</h1>
-      </div>
-      <div className="subHeading">
-        <br />
-        <h2>Day {day} </h2>
-      </div>
-      <div className="input">
-        <input value={toDo} onChange={(e)=>setToDo(e.target.value)} type="text" placeholder=" Add item..." />
-        <i onClick={()=>setToDos([...toDos,{id: Date.now() ,text:toDo,status:false}])} className="fas fa-plus"></i>
-      </div>
-      <div className="todos">
-        { 
-
-              toDos.map((list)=>{
-
-             
-        return(
-        <div className="todo">
-          <div className="left">
-            <input type="checkbox" name="" id="" />
-            <p>{list.text}</p>
+    <div>
+          <div className='TodoWrapper'>
+            <h1>Get Things Done!</h1>
+            <form className='TodoForm' onSubmit={handleSubmit}>
+            <input value={value} className='todo-input' type='text' placeholder='What is the task today?' onChange={(e)=> setValue(e.target.value)}/>
+            <button type='submit' className='todo-btn'>Add Task</button>
+            </form>
+            {
+              todos.map((todo, index)=>(
+                <Todo key={todo.id} task={todo} toggleComplete={toggleComplete}
+              />
+              ))
+            }
           </div>
-          <div className="right">
-            <i className="fas fa-times"></i>
-          </div>
-        </div>
-        )
-         })
-        }
-      </div>
     </div>
   )
 }
 
-export default UI
+export default UI;
+
