@@ -23,8 +23,9 @@ function UI() {
       )
     );
   }
-
-  
+  const deleteTodo = id =>{
+    setTodos(todos.filter(todo => todo.id !==id))
+  }
 
 
 
@@ -38,8 +39,7 @@ function UI() {
             </form>
             {
               todos.map((todo, index)=>(
-                <Todo key={todo.id} task={todo} toggleComplete={toggleComplete}
-              />
+                <Todo key={todo.id} task={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo}/>
               ))
             }
           </div>
