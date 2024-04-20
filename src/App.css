@@ -5,6 +5,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  margin-right: 1px;
+  margin-left: 1px;
 }
 
 body {

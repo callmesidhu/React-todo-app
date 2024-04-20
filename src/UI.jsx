@@ -1,6 +1,7 @@
 import React , {useState} from 'react'
 import {v4 as uuidv4} from 'uuid';
 import Todo from './Todo';
+import { EditTodoForm } from './EditTodoForm';
 uuidv4();
 
 function UI() {
@@ -26,7 +27,12 @@ function UI() {
   const deleteTodo = id =>{
     setTodos(todos.filter(todo => todo.id !==id))
   }
-
+  const editTodo = id =>{
+    setTodos(todos.map(todo=> todo.id === id?{...todo,isEditing: !todo.isEditing}:todo))
+  }
+  const editTask = (task, id)=> {
+    setTodos(todos.map(todo=> todo.id === id ? {...todo, isEditing: !todo.isEditing}:todo))
+  }
 
 
   return (
@@ -39,7 +45,7 @@ function UI() {
             </form>
             {
               todos.map((todo, index)=>(
-                <Todo key={todo.id} task={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo}/>
+                todo.isEditing ? (<EditTodoForm editTodo={editTodo} task={todo}/>) : ( <Todo key={todo.id} task={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/> )
               ))
             }
           </div>
