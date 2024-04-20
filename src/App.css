@@ -10,7 +10,7 @@
 }
 
 body {
-  background: #8758ff;
+  background: #5e0a0a;;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,10 +27,10 @@ h1 {
 }
 
 .TodoWrapper {
-  background: #1A1A40;
+  background: #000000;
   margin-top: 5rem;
   padding: 2rem;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .TodoForm {
@@ -41,7 +41,7 @@ h1 {
 .todo-input {
   outline: none;
   background: none;
-  border: 1px solid #8758ff;
+  border: 1px solid #5e0a0a;;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -54,7 +54,7 @@ h1 {
 }
 
 .todo-btn {
-  background: #8758ff;
+  background: #5e0a0a;;
   color: #fff;
   border: none;
   padding: 0.55rem;
@@ -65,7 +65,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #8758ff;
+  background: #5e0a0a;;
   color: #fff;
   padding: 0.75rem 1rem;
   border-radius: 5px;
