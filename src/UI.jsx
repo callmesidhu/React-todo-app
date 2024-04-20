@@ -45,7 +45,7 @@ function UI() {
             </form>
             {
               todos.map((todo, index)=>(
-                todo.isEditing ? (<EditTodoForm editTodo={editTodo} task={todo}/>) : ( <Todo key={todo.id} task={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/> )
+                todo.isEditing ? (<EditTodoForm editTodo={editTask} task={todo}/>) : ( <Todo key={todo.id} task={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo}/> )
               ))
             }
           </div>
